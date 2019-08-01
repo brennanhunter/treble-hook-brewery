@@ -1,5 +1,6 @@
 html {
     font-size: 62.5%; // 1rem is 10px
+    background: rgb(73, 58, 58);
 }
 
 *,
@@ -25,4 +26,6 @@ body {
     margin-top: 2rem;
     display: grid;
     justify-items: center;
+    background: green;
+    color: silver;
 }

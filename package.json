@@ -1,7 +1,7 @@
 {
-  "name": "react-bootstrap",
+  "name": "treble-hook-brewery",
   "version": "1.0.0",
-  "description": "Basic skeleton codebase for React with Bootstrap applications.",
+  "description": "First version of the website for Treble Hook Brewery",
   "scripts": {
     "preinstall": "npm set audit false",
     "start": "webpack-dev-server --config webpack/dev.config.js --watch",
@@ -25,7 +25,7 @@
     "sass",
     "css module"
   ],
-  "author": "Your Name Here",
+  "author": "Hunter Coleman",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/bottega-code-school/js-builder/issues"
@@ -56,6 +56,7 @@
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "jquery": "^3.3.1",
+    "moment": "2.23.0",
     "node-sass": "^4.9.2",
     "popper.js": "^1.14.4",
     "postcss-loader": "^2.1.6",
