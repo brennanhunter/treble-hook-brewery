@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import {
   BrowserRouter as Router,
   Switch,
   Route
-} from "react-router-dom"
+} from "react-router-dom";
 
-import BreweryContainer from './brewery-container';
+
+import BreweryContainer from './pages/brewery/brewery-container';
 import NavContainer from './navigation/nav-container';
 import Home from "./pages/home";
 import AboutUs from "./pages/about-us";
@@ -14,9 +16,16 @@ import Events from "./pages/events";
 import Shop from "./pages/shop";
 import ContactUs from "./pages/contact-us";
 import EventManager from "./pages/event-manager";
+import BreweryDetail from "./pages/brewery/brewery-detail";
+import NoMatch from "./pages/no-match";
 
 export default class App extends Component {
+
+
+
   render() {
+
+
     return (
       <div className="app">
         <Router>
@@ -31,12 +40,12 @@ export default class App extends Component {
               <Route exact path="/shop" component={Shop} />
               <Route exact path="/contact-us" component={ContactUs} />
               <Route exact path="/event-manager" component={EventManager} />
+              <Route exact path="/brewery/:slug" component={BreweryDetail} />
+              <Route component={NoMatch} />
             </Switch>
           </div>
         </Router>
 
-        <BreweryContainer />
-        
       </div>
     );
   }

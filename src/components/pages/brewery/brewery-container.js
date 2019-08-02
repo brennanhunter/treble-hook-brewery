@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import moment from "moment";
+import axios from 'axios';
+
 import BreweryItem from "./brewery-items"
 
 export default class BreweryContainer extends Component {
@@ -9,20 +11,31 @@ export default class BreweryContainer extends Component {
         this.state = {
             pageTitle: "Welcome to Treble Hook",
             isLoading: false,
-            data: [
-                {title: "Beer 1", category: "Dark"},
-                {title: "Beer 2", category: "Light"},
-                {title: "Beer 3", category: "Specialty"}
-            ]
+            data: []
         };
 
         this.handleFilter = this.handleFilter.bind(this);
     }
 
+    getBreweryItems() {
+        axios
+          .get('https://huntercoleman.devcamp.space/portfolio/portfolio_items')
+          .then(response => {
+            this.setState({
+                data: response.data.portfolio_items
+            })
+          })
+          .catch(error => {
+            console.log(error);
+        });
+    }
+
     breweryItems() {
         return this.state.data.map( item => {
-            return <BreweryItem title={item.title} url={"google.com"}/>;
-        }) 
+            return (
+            <BreweryItem key={item.id} title={item.name} url={item.url} slug={item.id}/>
+            );
+        }); 
     }
 
     handleFilter(filter) {
@@ -33,10 +46,15 @@ export default class BreweryContainer extends Component {
         })
     }
 
+    componentDidMount() {
+        this.getBreweryItems();
+    }
+
     render() {
         if(this.state.isLoading) {
             return <div>Loading...</div>;
         }
+
 
         return (
             <div>
@@ -47,11 +65,13 @@ export default class BreweryContainer extends Component {
 
                 <h2>{this.state.pageTitle}</h2>
 
-                {this.breweryItems()}
-
                 <button onClick={() => this.handleFilter('Dark')}>Dark</button>
                 <button onClick={() => this.handleFilter('Light')}>Light</button>
                 <button onClick={() => this.handleFilter('Specialty')}>Specialty</button>
+
+                {this.breweryItems()}
+
+
 
             </div>
         )
