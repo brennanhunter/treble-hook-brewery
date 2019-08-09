@@ -1,0 +1,73 @@
+.brewery-items-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+
+    .brewery-item-wrapper {
+        position: relative;
+
+        .brewery-img-background {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 250px;
+            width: auto; 
+        };
+
+        .img-text-wrapper {
+            position: absolute;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+            padding-left: 100px;
+            padding-right: 100px;
+            max-width: 350px;
+
+            .subtitle {
+                transition: 1s ease-in-out;
+                color: transparent;
+            }
+
+            .logo-wrapper {
+                img {
+                    height: 50px;
+                    width: 100%;
+                }
+            }
+        }
+
+        .img-text-wrapper:hover .subtitle {
+            color: lightblue;
+            font-weight: 400;
+        }
+    }
+}
+
+.image-blur {
+    transition: 1s;
+    filter: brightness(10%);
+}
+
+.site-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    background-image: linear-gradient(to bottom, #598234, #AEBD38);
+    color: white;
+
+    .header-logo {
+        height: 100px;
+        padding-right: 20px;
+        width: 130px;
+    }
+}
+
+.footer {
+    background-image: linear-gradient(to top, #598234, #AEDB38);
+    height: 150px;
+}

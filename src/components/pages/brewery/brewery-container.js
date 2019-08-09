@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import moment from "moment";
 import axios from 'axios';
 
-import BreweryItem from "./brewery-items"
+import BreweryItem from "./brewery-items";
 
 export default class BreweryContainer extends Component {
     constructor() {
@@ -33,7 +33,10 @@ export default class BreweryContainer extends Component {
     breweryItems() {
         return this.state.data.map( item => {
             return (
-            <BreweryItem key={item.id} title={item.name} url={item.url} slug={item.id}/>
+            <BreweryItem
+                key={item.id}
+                item={item}
+                />
             );
         }); 
     }
@@ -58,21 +61,20 @@ export default class BreweryContainer extends Component {
 
         return (
             <div>
-                <h1>Treble Hook Project</h1>
-                <h2>Dane, this is for you buddy!</h2>
-                {moment().format('MMMM Do YYYY, h:mm:ss a')}
-                <h2>Brewery details go here.</h2>
 
-                <h2>{this.state.pageTitle}</h2>
+                <div className="site-header">
+                    <img className="header-logo" src="../../static/assets/pictures/header-logo"></img>
+                    <h1>Welcome To Treble Hook Brewery</h1>
+                </div>
 
-                <button onClick={() => this.handleFilter('Dark')}>Dark</button>
-                <button onClick={() => this.handleFilter('Light')}>Light</button>
-                <button onClick={() => this.handleFilter('Specialty')}>Specialty</button>
+                <div className="brewery-items-wrapper">
+                    {this.breweryItems()}   
+                </div>
 
-                {this.breweryItems()}
-
-
-
+                <div className="footer">
+                    
+                </div>
+                
             </div>
         )
     }

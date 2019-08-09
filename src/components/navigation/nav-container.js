@@ -1,28 +1,78 @@
-import React, { Component } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
+import axios from 'axios';
+import { withRouter } from "react-router";
 
-export default class navContainer extends Component {
-    constructor() {
-        super();
-    }
+const navContainer = (props)=> {
+    const dynamicLink = (route, linkText) => {
+        return(
+            <div className="nav-link-wrapper">
+            <NavLink exact to="/beer-manager" activeClassName="nav-link-active">
+                Beer Manager
+            </NavLink>
+        </div>
+        );
+    };
+
+    const handleSignOut = () => {
+        axios.delete("https://api.devcamp.space/logout", { withCredentials : true}).then(response => {
+            if (response.status === 200) {
+                props.history.push("/");
+                props.handleSuccessfulLogout();
+            }
+            return response.data;
+        }).catch(error => {
+            console.log("Error sign out", error)
+        })
+    };
 
 
 
-    render() {
         return (
-            <div>
-                <NavLink exact to="/" activeClassName="nav-link-active">Home</NavLink>
-                <NavLink exact to="/about-us" activeClassName="nav-link-active">About Us</NavLink>
-                <NavLink exact to="/hall-of-fame" activeClassName="nav-link-active">Hall of Fame</NavLink>
-                <NavLink exact to="/events" activeClassName="nav-link-active">Events</NavLink>
-                <NavLink exact to="/shop" activeClassName="nav-link-active">Shop</NavLink>
-                <NavLink exact to="/contact-us" activeClassName="nav-link-active">Contact Us</NavLink>
-                <NavLink exact to="/event-manager" activeClassName="nav-link-active">Event Manager</NavLink>
+            <div className="nav-wrapper">
+                <div className="left-side">
+                    <div className="nav-link-wrapper">
+                        <NavLink exact to="/" activeClassName="nav-link-active">Home</NavLink>
+                    </div>
+
+                    <div className="nav-link-wrapper">
+                        <NavLink exact to="/about-us" activeClassName="nav-link-active">About Us</NavLink>
+                    </div>
+
+                    <div className="nav-link-wrapper">
+                        <NavLink exact to="/hall-of-fame" activeClassName="nav-link-active">Hall of Fame</NavLink>
+                    </div>
+
+                    <div className="nav-link-wrapper">
+                        <NavLink exact to="/events" activeClassName="nav-link-active">Events</NavLink>
+                    </div>
+
+                    <div className="nav-link-wrapper">
+                        <NavLink exact to="/shop" activeClassName="nav-link-active">Shop</NavLink>
+                    </div>
+
+                    <div className="nav-link-wrapper">
+                        <NavLink exact to="/contact-us" activeClassName="nav-link-active">Contact Us</NavLink>
+                    </div>
 
 
-                {false ? <button>Event Manager</button> : ''}
+
+                </div>
+
+                <div className="right-side">
+
+                {props.loggedInStatus === "LOGGED_IN" ? 
+                    <a onClick={handleSignOut}>Sign Out</a>
+                 : null}                        
+
+                {props.loggedInStatus === "LOGGED_IN" ? (
+                    dynamicLink("/beer-manager", "Beer Manager")
+                ) : null}                
+
+
+                </div>
             </div>
         )
     }
 
-}
+    export default withRouter(navContainer);
