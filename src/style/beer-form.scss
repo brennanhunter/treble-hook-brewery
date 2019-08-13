@@ -1,0 +1,43 @@
+.beer-form-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 42px;
+    grid-gap: 21px;
+
+    @include input-element;
+}
+
+textarea {
+    border: 1.5px solid black;
+    background: transparent;
+    font-size: 1rem;
+    height: 100px;
+    outline: none;
+    width: 90%;
+    padding: 10px;
+    border-radius: 6px;
+    transition: .5s all ease-in-out;
+
+    &:focus {
+        border: 1.5px solid lightgray;
+    }
+}
+
+.image-uploaders {
+    display: grid;
+    grid-template-columns: 200px 200px 200px
+    
+}
+
+.form-button {
+    @include base-btn;
+}
+
+.dz-message {
+    color: orange;
+}
+
+div.filepicker {
+    background: lavender;
+    border: none
+}

@@ -1,5 +1,12 @@
 .beer-sidebar-list-wrapper  {
     .beer-item-thumb {
+
+        a{
+            display: flex;
+            padding: 15px;
+            color: orange;
+            font-size: 32px;
+        }
         padding: 21px;
 
         .beer-photo img {
@@ -11,4 +18,21 @@
         }
 
     }
+}
+
+.text-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: gold;
+    font-size: 1.5rem;
+    padding: 10px
+
+    a {
+        padding: 15px;
+    }
+}
+
+.action {
+    
 }

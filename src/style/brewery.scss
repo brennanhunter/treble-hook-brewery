@@ -7,7 +7,7 @@
         position: relative;
 
         .brewery-img-background {
-            background-size: cover;
+            background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
             height: 250px;
@@ -35,7 +35,8 @@
             .logo-wrapper {
                 img {
                     height: 50px;
-                    width: 100%;
+                    width: 70px;
+                    
                 }
             }
         }

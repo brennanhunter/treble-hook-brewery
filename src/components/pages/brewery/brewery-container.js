@@ -3,6 +3,7 @@ import moment from "moment";
 import axios from 'axios';
 
 import BreweryItem from "./brewery-items";
+import Logo from "../../../../static/assets/pictures/header-logo2.jpg"
 
 export default class BreweryContainer extends Component {
     constructor() {
@@ -63,7 +64,7 @@ export default class BreweryContainer extends Component {
             <div>
 
                 <div className="site-header">
-                    <img className="header-logo" src="../../static/assets/pictures/header-logo"></img>
+                    <img className="header-logo" src={Logo} />
                     <h1>Welcome To Treble Hook Brewery</h1>
                 </div>
 

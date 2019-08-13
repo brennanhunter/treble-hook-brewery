@@ -16,3 +16,8 @@
         background-image: linear-gradient(to top left,orange, silver);
     }
 }
+
+button {
+    @include base-btn
+}
+

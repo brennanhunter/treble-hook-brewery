@@ -19,7 +19,7 @@ export default class BreweryItem extends Component {
     }
 
     render() {
-        const {id, description, thumb_image_url, logo_url} = this.props.item;
+        const {id, description, thumb_image_url, logo_url, url} = this.props.item;
         return (
             <div className="brewery-item-wrapper"
             onMouseEnter={() => this.handleMouseEnter()}

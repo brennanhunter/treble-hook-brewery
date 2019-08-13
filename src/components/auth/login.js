@@ -61,7 +61,7 @@ export default class Login extends Component {
 
         <div>{this.state.errorText}</div>
 
-        <form onSubmit={this.handleSubmit}>
+        <form className="two-column" className="auth-form" onSubmit={this.handleSubmit}>
           <input
             type="email"
             name="email"

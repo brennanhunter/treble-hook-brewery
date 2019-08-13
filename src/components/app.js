@@ -5,6 +5,9 @@ import {
   Route
 } from "react-router-dom";
 import axios from'axios';
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faSignOutAlt, faEdit } from "@fortawesome/free-solid-svg-icons"
 
 import NavContainer from './navigation/nav-container';
 import Home from "./pages/home";
@@ -17,6 +20,8 @@ import BeerManager from "./pages/beer-manager";
 import BreweryDetail from "./pages/brewery/brewery-detail";
 import NoMatch from "./pages/no-match";
 import Auth from "./pages/auth"
+
+library.add(faTrash, faSignOutAlt, faEdit)
 
 export default class App extends Component {
   constructor(props) {

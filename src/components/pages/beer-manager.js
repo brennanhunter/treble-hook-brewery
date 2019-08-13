@@ -9,15 +9,56 @@ class BeerManager extends Component {
         super();
 
         this.state = {
-            breweryItems: []
+            breweryItems: [],
+            beerToEdit: {
+
+            }
         };
 
-        this.handleSuccessfulFormSubmission = this.handleSuccessfulFormSubmission.bind(this);
+        this.handleNewFormSubmission = this.handleNewFormSubmission.bind(this);
+        this.handleEditFormSubmission = this.handleEditFormSubmission.bind(this);
         this.handleFormSubmissionError = this.handleFormSubmissionError.bind(this);
+        this.handleDeleteClick = this.handleDeleteClick.bind(this);
+        this.handleEditClick = this.handleEditClick.bind(this);
+        this.clearToEdit = this.clearToEdit.bind(this);
     }
 
-    handleSuccessfulFormSubmission(beerItem) {
+    clearToEdit() {
+        this.setState({
+            beerToEdit: {}
+        });
+    }
 
+    handleEditClick(beerItem) {
+        this.setState({
+            beerToEdit: beerItem
+        });
+    }
+
+    handleDeleteClick(beerItem) {
+        axios.delete(`https://api.devcamp.space/portfolio/portfolio_items/${beerItem.id}`, 
+        { withCredentials: true })
+        .then(response => {
+            this.setState({
+                breweryItems: this.state.breweryItems.filter(item => {
+                    return item.id != beerItem.id;
+                })
+            });
+
+            return response.data;
+        }).catch(error => {
+            console.log("error", error)
+        })
+    }
+
+    handleEditFormSubmission() {
+        this.getBreweryItems();
+    }
+
+    handleNewFormSubmission(beerItem) {
+        this.setState({
+            breweryItems: [beerItem].concat(this.state.breweryItems)
+        })
     }
 
     handleFormSubmissionError(error) {
@@ -25,7 +66,7 @@ class BeerManager extends Component {
     }
 
     getBreweryItems() {
-        axios.get("https://huntercoleman.devcamp.space/portfolio/portfolio_items", { withCredentials : true }).then(response => {
+        axios.get("https://huntercoleman.devcamp.space/portfolio/portfolio_items?order_by=created_at&direction=desc", { withCredentials : true }).then(response => {
             this.setState({
                 breweryItems: [...response.data.portfolio_items]
             })
@@ -45,14 +86,20 @@ class BeerManager extends Component {
             <div className="beer-manager-wrapper">
                 <div className="left-column">
                     <BeerForm 
-                        handleSuccessfulFormSubmission={this.handleSuccessfulFormSubmission}
+                        handleNewFormSubmission={this.handleNewFormSubmission}
+                        handleEditFormSubmission={this.handleEditFormSubmission}
                         handleFormSubmissionError = {this.handleFormSubmissionError}
+                        clearToEdit = {this.clearToEdit} 
+                        beerToEdit={this.state.beerToEdit}
                     />
                 </div>
 
                 <div className="right-column">
                     <h1>
-                        <BeerSideBarList data={this.state.breweryItems} />
+                        <BeerSideBarList 
+                        data={this.state.breweryItems} 
+                        handleDeleteClick={this.handleDeleteClick} 
+                        handleEditClick={this.handleEditClick} />
                     </h1>
                 </div>
             </div>
