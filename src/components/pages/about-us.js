@@ -51,7 +51,7 @@ export default function() {
                     </div>
 
                 <div className="square">
-                    <div class="square-text-wrapper">
+                    <div className="square-text-wrapper">
                         <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h1>
             
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorem laboriosam accusantium velit asperiores enim illo. Aliquam nostrum, libero eum sint animi consectetur blanditiis alias maxime repudiandae voluptatum illum deleniti necessitatibus. Dolorem hic repellat odio atque accusantium commodi, dolores nobis voluptates provident possimus quisquam, obcaecati esse voluptatibus earum qui modi assumenda!</p> 
