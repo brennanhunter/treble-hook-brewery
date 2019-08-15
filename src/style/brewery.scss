@@ -12,6 +12,7 @@
             background-repeat: no-repeat;
             height: 250px;
             width: auto; 
+            
         };
 
         .img-text-wrapper {
@@ -72,3 +73,41 @@
     background-image: linear-gradient(to top, #598234, #AEDB38);
     height: 150px;
 }
+
+.hall-of-fame-link {
+        background-image: url(../../static/assets/pictures/fish-background.jpg);
+        padding: 100px;
+        height: 300px;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    
+    padding-top: 250px;
+    padding-bottom: 150px;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    height: 300px
+
+
+    button{
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-content: center;
+        align-content: center;
+        justify-items: center;
+    }
+
+    .hall-of-fame-image {
+        width: 250px;
+        height: 250px;
+        float: left;
+        background-size: contain; 
+
+    }
+
+}
+

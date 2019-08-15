@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import axios from 'axios';
 import { withRouter } from "react-router";
-import SignOut from "../../../static/assets/pictures/middle-finger.png"
+import SignOut from "../../../static/assets/pictures/header-logo2.jpg"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const navContainer = (props)=> {
@@ -33,6 +33,11 @@ const navContainer = (props)=> {
         return (
             <div className="nav-wrapper">
                 <div className="left-side">
+
+                    <div className="home-header-logo">
+                        <img src= {SignOut} />
+                    </div>
+
                     <div className="nav-link-wrapper">
                         <NavLink exact to="/" activeClassName="nav-link-active">Home</NavLink>
                     </div>

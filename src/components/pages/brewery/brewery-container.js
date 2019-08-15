@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import moment from "moment";
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 import BreweryItem from "./brewery-items";
 import Logo from "../../../../static/assets/pictures/header-logo2.jpg"
+import FamePic from "../../../../static/assets/pictures/man-with-fish.jpg"
 
 export default class BreweryContainer extends Component {
     constructor() {
@@ -70,6 +72,11 @@ export default class BreweryContainer extends Component {
 
                 <div className="brewery-items-wrapper">
                     {this.breweryItems()}   
+                </div>
+
+                <div className = "hall-of-fame-link">
+                    <img className="hall-of-fame-image" src={FamePic} />
+                    <Link to="./hall-of-fame"><button>Our Wall of Fame</button></Link>
                 </div>
 
                 <div className="footer">

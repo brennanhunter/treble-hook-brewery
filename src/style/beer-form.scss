@@ -25,7 +25,26 @@ textarea {
 
 .image-uploaders {
     display: grid;
-    grid-template-columns: 200px 200px 200px
+    grid-template-columns: 200px 200px 200px;
+
+    .beer-manager-image-wrapper {
+        img{
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .image-removal-link {
+            display: flex;
+            justify-content: center;
+            a {
+                font-size: 24px;
+                color: rgb(206, 108, 168);
+                cursor: pointer;
+            }
+        }
+    }
     
 }
 
@@ -41,3 +60,4 @@ div.filepicker {
     background: lavender;
     border: none
 }
+
